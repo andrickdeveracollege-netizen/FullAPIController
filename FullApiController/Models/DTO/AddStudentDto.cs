@@ -1,8 +1,11 @@
-﻿namespace FullApiController.Models.DTO
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FullApiController.Models.DTO
 {
     public class AddStudentDto
     {
-        public int StudentNumber { get; set; }
+        [RegularExpression(@"^\d{8}$", ErrorMessage = "Student number must be in the format YEAR ENROLLED & BIRTH YEAR.")]
+        public string StudentNumber { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Gender { get; set; }

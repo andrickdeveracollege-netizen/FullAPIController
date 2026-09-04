@@ -11,6 +11,7 @@ namespace FullApiController.Controllers
     public class StudentController : ControllerBase
     {
         static List<Student> students = new List<Student>();
+        static int nextId = 1;
 
         [HttpGet]
         public IActionResult GetStudents()
@@ -36,8 +37,10 @@ namespace FullApiController.Controllers
             {
                 return BadRequest();
             }
-            students.Add(student.MapToStudent());
-            return Ok(student);
+            var newStudent = student.MapToStudent();
+            newStudent.Id = nextId++;
+            students.Add(newStudent);
+            return Ok(newStudent);
         }
 
         [HttpPut("{id:int}")]
