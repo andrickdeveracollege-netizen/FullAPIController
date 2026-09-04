@@ -23,6 +23,7 @@ namespace FullApiController.Mapper
         {
             return new Student
             {
+                StudentNumber = addStudentDto.StudentNumber,
                 LastName = addStudentDto.LastName,
                 FirstName = addStudentDto.FirstName,
                 Gender = addStudentDto.Gender,
